@@ -1,6 +1,10 @@
+import Header from "@/components/Header"
+
 export default function Listings() {
     return (
-      <h1>Listings</h1>
+      <div>
+        <Header />
+      </div>
     );
-  }
+}
   
