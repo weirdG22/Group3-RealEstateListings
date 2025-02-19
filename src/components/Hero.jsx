@@ -1,5 +1,7 @@
 'use client'
 
+import { SignInButton, SignUpButton, SignedIn, SignedOut, UserButton } from '@clerk/next.js' 
+
 import { useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
@@ -26,20 +28,25 @@ export default function Example() {
           <div className="px-6 pt-6 lg:max-w-2xl lg:pl-8 lg:pr-0">
 
             <nav aria-label="Global" className="flex items-center justify-between lg:justify-start">
+              <div className="flex lg:flex-1"
               <a href="/" className="-m-1.5 p-1.5">
                 <span className="sr-only">Real Estate Listings</span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-8 text-blue-500">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205 3 1m1.5.5-1.5-.5M6.75 7.364V3h-3v18m3-13.636 10.5-3.819" />
                 </svg>
-              </a>
+                </a>
+              </div>
+
+            <div className="flex lg:hidden">
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(true)}
-                className="-m-2.5 rounded-md p-2.5 text-gray-700 lg:hidden"
+                className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 lg:hidden"
               >
                 <span className="sr-only">Open main menu</span>
                 <Bars3Icon aria-hidden="true" className="size-6" />
               </button>
+            </div>
 
               {/*This displays the different pages on the screen */}
               <div className="hidden lg:ml-12 lg:flex lg:gap-x-14">
@@ -49,7 +56,17 @@ export default function Example() {
                   </a>
                 ))}
               </div>
-
+              <div className="hideen lg:flex lg:flex-1 lg:justify-end">
+                  <SignedIN>
+                    <UserButton />
+                  </SignedIN>
+                  <SignedOut>
+                      <div className="flex gap-8">
+                          <SignInButton className="text-sm/6 font-semibold text-gray-100" />
+                          <SignUpButton className="text-sm/6 font-semibold text-gray-100" />
+                      </div>
+                  </SignedOut>
+              </div>
             </nav>
 
           </div>
