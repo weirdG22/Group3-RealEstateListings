@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
-import { SignInButton, SignUpButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+
 
 const navigation = [
 	{ name: 'Home', href: '/' },
@@ -44,15 +44,7 @@ export default function Header() {
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-        <SignedIn>
-              	<UserButton />
-            	</SignedIn>
-            	<SignedOut>
-              		<div className="flex gap-8">
-                		<SignInButton className="text-sm/6 font-semibold text-gray-900" />
-                		<SignUpButton className="text-sm/6 font-semibold text-gray-900" />
-              		</div>
-            	</SignedOut>	
+       
         </div>
       </nav>
       <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
@@ -90,15 +82,7 @@ export default function Header() {
                 ))}
               </div>
               <div className="py-6">
-			        <SignedIn>
-              	<UserButton />
-            	</SignedIn>
-            	<SignedOut>
-              		<div className="flex gap-8">
-                		<SignInButton className="text-sm/6 font-semibold text-gray-900" />
-                		<SignUpButton className="text-sm/6 font-semibold text-gray-900" />
-              		</div>
-            	</SignedOut>	
+			     
               </div>
             </div>
           </div>
