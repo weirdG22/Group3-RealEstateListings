@@ -8,10 +8,23 @@ const navigation = [
   { name: 'Creating', href: '/create'},
 ]
 
+//list of imports that add to the page
+import ListingTabs from '@/components/ListingsTabs';
+import Hero from '@/components/Hero';
+import Footer from '@/components/Footer';
+import Navigation from '@/components/Navigation';
+import { useState } from 'react';
+import Options from '@/components/Options';
 
 export default function About() {
     return (
-      <p>About Page</p>
+      <div className='relative'>
+          <Navigation />
+
+
+
+          <Footer />
+      </div>
     );
   }
   

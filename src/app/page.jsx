@@ -51,7 +51,7 @@ const Users =[
   {
     username: 'Judith Black',
     position: 'Platform User',
-    text: '"Very quick and helpful! This site has it all!"',
+    text: '"Very quick and helpful! This site has it all, From the ability to create listings easily to finding listings in different states easily!"',
     picture: 'https://images.unsplash.com/photo-1533736970669-7edc3f971be1?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
 
@@ -117,7 +117,7 @@ export default function Home() {
       </div>
       </div>
 
-      <section className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:px-6 min-h-screen">
+      <section className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:px-6 max-h-auto min-h-[2rem]">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(90rem_20rem_at_top,theme(colors.indigo.100),white)] opacity-20" />
       <div className="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-right skew-x-[30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center" />
       <div className="mx-auto max-w-2xl lg:max-w-4xl flex flex-col justify-center items-center">

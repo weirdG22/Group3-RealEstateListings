@@ -155,7 +155,7 @@ const States = [
 export default function Options() {
 
     return(
-        <select className='py-2 h-5 overflow-y-auto'>
+        <select className='py-2 h-5 overflow-y-auto w-[8rem] md:w-[10rem] my-4'>
             {States.map((state, index) => {
                 return <option key={index}>{state.State}</option>
             })}
