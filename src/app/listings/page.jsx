@@ -15,9 +15,8 @@ import Hero from '@/components/Hero';
 import Footer from '@/components/Footer';
 import Navigation from '@/components/Navigation';
 import CreateListings from '../create/page';
-
-
-
+import dynamic from 'next/dynamic';
+import { useState } from 'react';
 
 
 
@@ -34,50 +33,86 @@ const filters = [
   },
 ]
 
+
+
+
+const ListingsMap = dynamic(() => import('@/components/Map'), { ssr: false }); // For importing the map
 export default function Listings() {
+
+    const [inputValue, setInputValue] = useState(''); // to store input value
+    const [searchedAddress, setSearchedAddress] = useState('');
+
+    // Function that will use the input value
+    const searchLocation = () => {
+      setSearchedAddress(inputValue); // setting searched address
+    };
+
+    // Handle input changes
+    const changeText = (e) => {
+      setInputValue(e.target.value);
+    };
+
     return (
       <div>
         <Navigation />
        
         {/* */}
-          <div className='relative'>
-            <div className='mt-20 bg-[#7a7eb1] w-[100vw] lg:h-[30rem] mi:h-[25rem] sm:h-[20rem] py-24'>
-
-              {/*Where the map logic will be located. Will get rid of the bg when 
-              adding the pictures */}
-
+          <div className='relative z-25'>
+            <div className='mt-20  w-[100vw] lg:h-[30rem] mi:h-[25rem] sm:h-[20rem]'>
+                <ListingsMap searchedAddress={searchedAddress} />
             </div>
           </div>
 
 
-          <div className='py-10 px-5 flex md:py-5 md:px-4 sm:px-2'>
+          <div className='my-5'> {/* Keep this part in mind!!! */}
 
 
-              <div className='px-5 flex-3 relative'>
-                <h1 className='text-center text-3xl lg:text-5xl'>Filters</h1>
-                {filters.map((filters, index) => {
-                  return <div className='flex my-8  cursor-pointer'>
-                             <p className='sm:py-10 bg:py-6 font-semibold bg-blue-100 hover:bg-blue-200 transition-colors duration-150 rounded-full w-full text-center self-center' key={index}>{filters.option}</p>
-                        </div>
-                })}
+          <div className=''>
+
+            <div className='flex self-center'>
+                
+                  <input
+                    value={inputValue}
+                    onChange={changeText}
+                    type="text"
+                    placeholder="Enter your location..."
+                    className=" ml-2 rounded-xl border-2 border-black box-border align-middle text-base w-[50%] py-2"
+                  />
+                  <p onClick={searchLocation} className=' ml-2 border-2 border-black rounded-xl hover:bg-[#8e9094] duration-150 w-35 px-3 py-2 text-center align-center cursor-pointer'>
+                    Search
+                  </p>
+                  <a href='/create' className=' ml-2 border-2 border-black rounded-xl hover:bg-[#8e9094] duration-150 w-35 px-3 py-2 text-center align-center'>
+                    Add Listing
+                  </a>
               </div>
 
-              
-              <div className='flex'>
-                <div className='text-lg items-center'>
-                <input
-                  type="text"
-                  placeholder="Enter your location..."
-                  className="mb-5 md:mb-0 sm:mb-0 rounded-xl border-2 border-black p-2 box-border align-middle self-center w-full text-base sm:w-[45%] sm:text-xs md:w-[55%] md:text-base lg:w-[65%] lg:text-lg"
-                />
+              <div className='w-full text-center  flex'>
+                 {filters.map((filter, index) => {
+              return (
+                <div className='cursor-pointer py-3 px-6 my-3 ml-2 mx-3 bg-blue-100 hover:bg-blue-200 rounded-xl border-2 duration-150'>
+                  <p className=''  key={index}>
+                    {filter.option}
+                  </p>
+                </div>
+              );
+            })}
+            </div>
 
-                <a href='/create' className='md:mt-5 md:ml-5 border-2 border-black rounded-xl p-2 hover:bg-[#8e9094] duration-150'>Add Listing</a>
 
                 {/*Where the listings will be located at
                 when creating a tab allow the user to set up the timezone */}
-                  <div>  
-                  </div>
-                  
+                <div className='max-h-[34rem] overflow-y-scroll overflow-hidden mx-8 my-3'>
+                  <div className='lg:grid-cols-4 md:grid grid-cols-3 grid-cols-2 gap-3 w-full h-[40rem] sm:mx-2 mx-5'>
+                    <div className='bg-black'>item 1</div>
+                    <div className='bg-white'>item 2</div>
+                    <div className='bg-black'>item 3</div>
+                    <div className='bg-white'>item 4</div>
+                    <div className='bg-black'>item 5</div>
+                    <div className='bg-white'>item 6</div>
+                    <div className='bg-black'>item 7</div>
+                    <div className='bg-white'>item 8</div>
+                    <div className='bg-black'>item 9</div>
+                </div> 
                 </div>
             </div>
           
