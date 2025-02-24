@@ -1,127 +1,156 @@
 'use client'
 
-//list of imports to different pages
-const navigation = [
-  { name: 'Listings', href: '/listings' },
-  { name: 'About Us', href: '/about' },
-  { name: 'Sign-Up', href: '/sign/login' },
-  { name: 'Creating', href: '/create'},
-]
-
-
-//list of imports that add to the page
-import ListingTabs from '@/components/ListingsTabs';
-import Hero from '@/components/Hero';
 import Footer from '@/components/Footer';
-import Navigation from '@/components/Navigation';
-import CreateListings from '../create/page';
-import dynamic from 'next/dynamic';
+import Header from '@/components/Header';
+import Listing from '@/components/Listings';
 import { useState } from 'react';
 
-
-
-//Filter option
-const filters = [
+let units = [
   {
-    option : 'New Listings',
+    type: 'sale',
+    address: "123 Address Rd, Indianapolis, IN, 46227",
+    beds: 1,
+    baths: 1,
+    sqft: 2520,
+    status: "Active",
+    price: 500000
   },
   {
-    option : 'Dated Listings',
+    type: 'sale',
+    address: "123 Address Rd, Indianapolis, IN, 46227",
+    beds: 1,
+    baths: 1,
+    sqft: 2520,
+    status: "Active",
+    price: 500000
   },
   {
-    option : 'Clientele',
+    type: 'rent',
+    address: "123 Address Rd, Indianapolis, IN, 46227",
+    beds: 1,
+    baths: 1,
+    sqft: 2520,
+    status: "Active",
+    price: 1000
+  },
+  {
+    type: 'rent',
+    address: "123 Address Rd, Indianapolis, IN, 46227",
+    beds: 1,
+    baths: 1,
+    sqft: 2520,
+    status: "Active",
+    price: 2500
+  },
+  {
+    type: 'sale',
+    address: "123 Address Rd, Indianapolis, IN, 46227",
+    beds: 1,
+    baths: 1,
+    sqft: 2520,
+    status: "Active",
+    price: 500000
+  },
+  {
+    type: 'sale',
+    address: "123 Address Rd, Indianapolis, IN, 46227",
+    beds: 1,
+    baths: 1,
+    sqft: 2520,
+    status: "Active",
+    price: 500000
+  },
+  {
+    type: 'sale',
+    address: "123 Address Rd, Indianapolis, IN, 46227",
+    beds: 1,
+    baths: 1,
+    sqft: 2520,
+    status: "Active",
+    price: 500000
+  },
+  {
+    type: 'sale',
+    address: "123 Address Rd, Indianapolis, IN, 46227",
+    beds: 1,
+    baths: 1,
+    sqft: 2520,
+    status: "Active",
+    price: 500000
+  },
+  {
+    type: 'rent',
+    address: "123 Address Rd, Indianapolis, IN, 46227",
+    beds: 1,
+    baths: 1,
+    sqft: 2520,
+    status: "Active",
+    price: 1500
+  },
+  {
+    type: 'sale',
+    address: "123 Address Rd, Indianapolis, IN, 46227",
+    beds: 1,
+    baths: 1,
+    sqft: 2520,
+    status: "Active",
+    price: 500000
   },
 ]
 
-
-
-
-const ListingsMap = dynamic(() => import('@/components/Map'), { ssr: false }); // For importing the map
-export default function Listings() {
-
-    const [inputValue, setInputValue] = useState(''); // to store input value
-    const [searchedAddress, setSearchedAddress] = useState('');
-
-    // Function that will use the input value
-    const searchLocation = () => {
-      setSearchedAddress(inputValue); // setting searched address
-    };
-
-    // Handle input changes
-    const changeText = (e) => {
-      setInputValue(e.target.value);
-    };
+export default function About() {
+    const [typeOfUnit, setTypeOfUnit] = useState('all');
+    const [bedrooms, setBedrooms] = useState(1);
+    const [bathrooms, setBathrooms] = useState(1);
 
     return (
       <div>
-        <Navigation />
-       
-        {/* */}
-          <div className='relative z-25'>
-            <div className='mt-20  w-[100vw] lg:h-[30rem] mi:h-[25rem] sm:h-[20rem]'>
-                <ListingsMap searchedAddress={searchedAddress} />
+        <Header />
+
+        <section className='h-64 bg-[url(https://images.unsplash.com/photo-1524813686514-a57563d77965)] bg-cover'>
+          <div className="w-full h-full backdrop-blur-[4px] flex items-center justify-center">
+            <h1 className='text-6xl text-white font-bold'>Our Listings</h1>
+          </div>
+        </section>
+
+        <section className='max-w-7xl mx-auto px-4 xl:px-0'>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[30%_30%_20%_20%] gap-4 mt-4 border-neutral-300 border-b-2 pb-2 text-neutral-800">
+            <input type="text" placeholder='Search an Address' className='w-72 outline-none' />
+
+            <div className="flex">
+              <p className='pr-3 font-semibold'>Type of Unit:</p>
+              <button className={typeOfUnit === 'all' ? "font-semibold bg-neutral-200 rounded px-3" : "px-3"} onClick={() => setTypeOfUnit('all')}>All</button>
+              <button className={typeOfUnit === 'sale' ? "font-semibold bg-neutral-200 rounded px-3" : "px-3"} onClick={() => setTypeOfUnit('sale')}>For Sale</button>
+              <button className={typeOfUnit === 'rent' ? "font-semibold bg-neutral-200 rounded px-3" : "px-3"} onClick={() => setTypeOfUnit('rent')}>For Rent</button>
+            </div>
+
+            <div className="flex">
+              <p className='pr-3 font-semibold'>Bedrooms:</p>
+              <button className={bedrooms === 1 ? "font-semibold bg-neutral-200 rounded px-3" : "px-3"} onClick={() => setBedrooms(1)}>1</button>
+              <button className={bedrooms === 2 ? "font-semibold bg-neutral-200 rounded px-3" : "px-3"} onClick={() => setBedrooms(2)}>2</button>
+              <button className={bedrooms === 3 ? "font-semibold bg-neutral-200 rounded px-3" : "px-3"} onClick={() => setBedrooms(3)}>3+</button>
+            </div>
+
+            <div className="flex">
+            <p className='pr-3 font-semibold'>Bathrooms:</p>
+              <button className={bathrooms === 1 ? "font-semibold bg-neutral-200 rounded px-3" : "px-3"} onClick={() => setBathrooms(1)}>1</button>
+              <button className={bathrooms === 2 ? "font-semibold bg-neutral-200 rounded px-3" : "px-3"} onClick={() => setBathrooms(2)}>2</button>
+              <button className={bathrooms === 3 ? "font-semibold bg-neutral-200 rounded px-3" : "px-3"} onClick={() => setBathrooms(3)}>3+</button>
             </div>
           </div>
 
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mt-4 gap-8">
 
-          <div className='my-5'> {/* Keep this part in mind!!! */}
-
-
-          <div className=''>
-
-            <div className='flex self-center'>
-                
-                  <input
-                    value={inputValue}
-                    onChange={changeText}
-                    type="text"
-                    placeholder="Enter your location..."
-                    className=" ml-2 rounded-xl border-2 border-black box-border align-middle text-base w-[50%] py-2"
-                  />
-                  <p onClick={searchLocation} className=' ml-2 border-2 border-black rounded-xl hover:bg-[#8e9094] duration-150 w-35 px-3 py-2 text-center align-center cursor-pointer'>
-                    Search
-                  </p>
-                  <a href='/create' className=' ml-2 border-2 border-black rounded-xl hover:bg-[#8e9094] duration-150 w-35 px-3 py-2 text-center align-center'>
-                    Add Listing
-                  </a>
-              </div>
-
-              <div className='w-full text-center  flex'>
-                 {filters.map((filter, index) => {
-              return (
-                <div className='cursor-pointer py-3 px-6 my-3 ml-2 mx-3 bg-blue-100 hover:bg-blue-200 rounded-xl border-2 duration-150'>
-                  <p className=''  key={index}>
-                    {filter.option}
-                  </p>
-                </div>
-              );
-            })}
-            </div>
-
-
-                {/*Where the listings will be located at
-                when creating a tab allow the user to set up the timezone */}
-                <div className='max-h-[34rem] overflow-y-scroll overflow-hidden mx-8 my-3'>
-                  <div className='lg:grid-cols-4 md:grid grid-cols-3 grid-cols-2 gap-3 w-full h-[40rem] sm:mx-2 mx-5'>
-                    <div className='bg-black'>item 1</div>
-                    <div className='bg-white'>item 2</div>
-                    <div className='bg-black'>item 3</div>
-                    <div className='bg-white'>item 4</div>
-                    <div className='bg-black'>item 5</div>
-                    <div className='bg-white'>item 6</div>
-                    <div className='bg-black'>item 7</div>
-                    <div className='bg-white'>item 8</div>
-                    <div className='bg-black'>item 9</div>
-                </div> 
-                </div>
-            </div>
-          
-
+            {units.map((unit, index) => (
+              <Listing key={index} unit={unit} />
+            ))}
 
           </div>
-          <Footer />
+        </section>
+
+        <Footer />
       </div>
-     
     );
 }
   
