@@ -1,5 +1,6 @@
 import { ClerkProvider } from '@clerk/nextjs'
 import "./globals.css";
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 export const metadata = {
   title: "Real Estate Listings",

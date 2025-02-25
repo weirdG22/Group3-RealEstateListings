@@ -6,8 +6,9 @@ function formatPrice(price) {
 }
 
 export default function Listing({ unit }) {
+    // Replace Placeholder ID
     return (
-        <div className="shadow-xl border-[1px] border-neutral-300 rounded-xl bg-neutral-100">
+        <a href="/listings/unit._id" className="shadow-xl border-[1px] border-neutral-300 rounded-xl bg-neutral-100 cursor-pointer  hover:-translate-y-2 transition">
             <div className="h-52 bg-[url(https://images.unsplash.com/photo-1464146072230-91cabc968266)] bg-cover bg-center rounded-t-xl" />
             <div className="p-2">
                 <h3 className='text-xl font-bold'>{unit.type === 'sale' ? formatPrice(unit.price) : `${formatPrice(unit.price)}/month`}</h3>
@@ -22,6 +23,6 @@ export default function Listing({ unit }) {
                 </div>
                 <p>{unit.address}</p>
             </div>
-        </div>
+        </a>
     )
 }
