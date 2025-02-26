@@ -1,8 +1,9 @@
 import { Transition } from '@headlessui/react';
 import { transform } from 'next/dist/build/swc/generated-native';
+import { withUt } from "uploadthing/tw";
 
 /** @type {import('tailwindcss').Config} */
-export default {
+export default withUt({
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -32,4 +33,4 @@ export default {
     },
   },
   plugins: [],
-};
+});

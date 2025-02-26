@@ -2,105 +2,12 @@
 
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import Listing from '@/components/Listings';
+import ListingsList from '@/components/ListingsList';
 
-import Map from 'react-map-gl/mapbox';
 import { useState } from 'react';
 
-let units = [
-  {
-    type: 'sale',
-    address: "123 Address Rd, Indianapolis, IN, 46227",
-    beds: 1,
-    baths: 1,
-    sqft: 2520,
-    status: "Active",
-    price: 500000
-  },
-  {
-    type: 'sale',
-    address: "123 Address Rd, Indianapolis, IN, 46227",
-    beds: 1,
-    baths: 1,
-    sqft: 2520,
-    status: "Active",
-    price: 500000
-  },
-  {
-    type: 'rent',
-    address: "123 Address Rd, Indianapolis, IN, 46227",
-    beds: 1,
-    baths: 1,
-    sqft: 2520,
-    status: "Active",
-    price: 1000
-  },
-  {
-    type: 'rent',
-    address: "123 Address Rd, Indianapolis, IN, 46227",
-    beds: 1,
-    baths: 1,
-    sqft: 2520,
-    status: "Active",
-    price: 2500
-  },
-  {
-    type: 'sale',
-    address: "123 Address Rd, Indianapolis, IN, 46227",
-    beds: 1,
-    baths: 1,
-    sqft: 2520,
-    status: "Active",
-    price: 500000
-  },
-  {
-    type: 'sale',
-    address: "123 Address Rd, Indianapolis, IN, 46227",
-    beds: 1,
-    baths: 1,
-    sqft: 2520,
-    status: "Active",
-    price: 500000
-  },
-  {
-    type: 'sale',
-    address: "123 Address Rd, Indianapolis, IN, 46227",
-    beds: 1,
-    baths: 1,
-    sqft: 2520,
-    status: "Active",
-    price: 500000
-  },
-  {
-    type: 'sale',
-    address: "123 Address Rd, Indianapolis, IN, 46227",
-    beds: 1,
-    baths: 1,
-    sqft: 2520,
-    status: "Active",
-    price: 500000
-  },
-  {
-    type: 'rent',
-    address: "123 Address Rd, Indianapolis, IN, 46227",
-    beds: 1,
-    baths: 1,
-    sqft: 2520,
-    status: "Active",
-    price: 1500
-  },
-  {
-    type: 'sale',
-    address: "123 Address Rd, Indianapolis, IN, 46227",
-    beds: 1,
-    baths: 1,
-    sqft: 2520,
-    status: "Active",
-    price: 500000
-  },
-]
-
-export default function About() {
+export default function Listings() {
+    const [search, setSearch] = useState("");
     const [typeOfUnit, setTypeOfUnit] = useState('all');
     const [bedrooms, setBedrooms] = useState(1);
     const [bathrooms, setBathrooms] = useState(1);
@@ -117,19 +24,8 @@ export default function About() {
 
         <section className='max-w-7xl mx-auto px-4 xl:px-0'>
 
-          <Map 
-            mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
-            initialViewState={{
-              longitude: 70,
-              latitude: 70,
-              zoom: 7
-            }}
-            mapStyle="mapbox://styles/mapbox/streets-v12"
-            className="h-96 bg-neutral-200 my-8 rounded-xl"
-          />
-
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[30%_30%_20%_20%] gap-4 mt-4 border-neutral-300 border-b-2 pb-2 text-neutral-800">
-            <input type="text" placeholder='Search an Address' className='w-72 outline-none' />
+            <input type="text" placeholder='Search an Address' className='w-72 outline-none' value={search} onChange={(e) => setSearch(e.target.value)} />
 
             <div className="flex">
               <p className='pr-3 font-semibold'>Type of Unit:</p>
@@ -153,13 +49,7 @@ export default function About() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mt-4 gap-8">
-
-            {units.map((unit, index) => (
-              <Listing key={index} unit={unit} />
-            ))}
-
-          </div>
+          <ListingsList search={search} typeOfUnit={typeOfUnit} bedrooms={bedrooms} bathrooms={bathrooms} />
         </section>
 
         <Footer />
