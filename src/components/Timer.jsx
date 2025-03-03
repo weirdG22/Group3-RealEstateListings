@@ -1,20 +1,18 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 // Timer to iterate through different elements throughout the project
 const Timing = ({ cycleLength, timeLength, onTimeUpdate }) => {
-    const [currentTime, setCurrentTime] = useState(0);
-
     useEffect(() => {
         const timerInterval = setInterval(() => {
-            setCurrentTime((prev) => {
-                const newTime = (prev + 1) % cycleLength;
-                onTimeUpdate(newTime);  // Notify parent about the current time
-                return newTime;
-            });
+            // Call the parent callback to update the tab
+            onTimeUpdate();
         }, timeLength);
 
-        return () => clearInterval(timerInterval);
-    }, [cycleLength, timeLength, onTimeUpdate]);
+        return () => clearInterval(timerInterval); // Cleanup on unmount
+    }, [cycleLength, timeLength, onTimeUpdate]); // Ensure the interval is reset if anything changes
+
+    // This component doesn't render anything
+    return null;
 };
 
 export default Timing;

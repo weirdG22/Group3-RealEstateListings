@@ -45,9 +45,9 @@ export default function Reviews() {
     const [CurrentTime, setCurrentTime] = useState(0);
     
     // Update the user index when the timer changes
-    const handleTimeUpdate = (newTime) => {
-        setCurrentTime(newTime);  // Update the user index to show based on timer
-    };
+    const updateTime = () => {
+      setCurrentTime((prev) => (prev + 1) % Users.length);  // Cycle through users
+  };
     
     return (
     <section className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:px-6 max-h-auto min-h-[2rem]">
@@ -68,7 +68,7 @@ export default function Reviews() {
               className="mx-auto size-10 rounded-full animate-textTransition"
             />
 
-            <Timing cycleLength={Users.length} timeLength={5000} onTimeUpdate={handleTimeUpdate} />
+            <Timing cycleLength={Users.length} timeLength={5000} onTimeUpdate={updateTime} />
             <div className="mt-4 flex items-center justify-center space-x-3 text-base">
             
             <div key={Users[CurrentTime].username} className="font-semibold text-gray-900 animate-fadding_Bottom" >
