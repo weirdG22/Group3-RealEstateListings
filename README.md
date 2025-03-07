@@ -2,10 +2,10 @@ This project is currently being hosted at [https://re-listings.vercel.app](https
 
 ## Installation Instructions:
 To run the Real Estate Listing website locally, a few prerequisites are required:
-NodeJS (latest stable): [https://nodejs.org](https://nodejs.org)
-MongoDB (cloud or local): [https://www.mongodb.com/](https://www.mongodb.com/)
-Clerk Account: [https://clerk.com/](https://clerk.com/)
-UploadThing Account: [https://uploadthing.com/](https://uploadthing.com/)
+- NodeJS (latest stable): [https://nodejs.org](https://nodejs.org)
+- MongoDB (cloud or local): [https://www.mongodb.com/](https://www.mongodb.com/)
+- Clerk Account: [https://clerk.com/](https://clerk.com/)
+- UploadThing Account: [https://uploadthing.com/](https://uploadthing.com/)
 
 Once NodeJS has been installed, you’ve setup a MongoDB database in the cloud or locally, you’ve signed up for a Clerk account and have your keys, and you’ve created an UploadThing Account and have your keys, follow the instructions below:
 1. Clone the project to a local directory on your computer.
