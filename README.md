@@ -1,36 +1,18 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This project is currently being hosted at [https://re-listings.vercel.app](https://re-listings.vercel.app) for ease of viewing. If you would like to host the website on your own, follow the instructions below:
 
-## Getting Started
+## Installation Instructions:
+To run the Real Estate Listing website locally, a few prerequisites are required:
+NodeJS (latest stable): [https://nodejs.org](https://nodejs.org)
+MongoDB (cloud or local): [https://www.mongodb.com/](https://www.mongodb.com/)
+Clerk Account: [https://clerk.com/](https://clerk.com/)
+UploadThing Account: [https://uploadthing.com/](https://uploadthing.com/)
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Once NodeJS has been installed, you’ve setup a MongoDB database in the cloud or locally, you’ve signed up for a Clerk account and have your keys, and you’ve created an UploadThing Account and have your keys, follow the instructions below:
+1. Clone the project to a local directory on your computer.
+2. Install all the local dependencies by running `npm install` in the project's main directory.
+3. Create a `.env` file in the main directory and add the following variables to the file:
+  a. CLERK_SECRET_KEY = “your key”
+  b. NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY = "your key”
+  c. MONGODB_URI = “your database uri”
+  d. UPLOADTHING_TOKEN = “your token”
+8. Run the website with the command `npm run dev` and navigate to `http://localhost:3000`.
