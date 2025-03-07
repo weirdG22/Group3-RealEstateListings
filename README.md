@@ -11,8 +11,8 @@ Once NodeJS has been installed, you’ve setup a MongoDB database in the cloud o
 1. Clone the project to a local directory on your computer.
 2. Install all the local dependencies by running `npm install` in the project's main directory.
 3. Create a `.env` file in the main directory and add the following variables to the file:
-  a. CLERK_SECRET_KEY = “your key”
-  b. NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY = "your key”
-  c. MONGODB_URI = “your database uri”
-  d. UPLOADTHING_TOKEN = “your token”
+   1. CLERK_SECRET_KEY = “your key”
+   2. NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY = "your key”
+   3. MONGODB_URI = “your database uri”
+   4. UPLOADTHING_TOKEN = “your token”
 8. Run the website with the command `npm run dev` and navigate to `http://localhost:3000`.
